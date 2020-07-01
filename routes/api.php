@@ -21,9 +21,15 @@ Route::prefix('v1')->group(function(){
 
     Route::middleware('auth:api')->group(function(){
 
-        Route::get('/posts',function (){
-            echo 'welcome to posts api';
-        });
+        Route::get('/posts', 'V1\API\PostController@index');
+
+        Route::post('/post/create', 'V1\API\PostController@store');
+
+        Route::put('/post/update/{id}', 'V1\API\PostController@update');
+
+        Route::patch('/post/update/patch/{id}', 'V1\API\PostController@update_patch');
+
+        Route::delete('/post/delete/{id}', 'V1\API\PostController@destroy');
 
     });
 
